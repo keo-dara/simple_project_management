@@ -21,12 +21,13 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 
 grails.plugin.springsecurity.rest.logout.endpointUrl = '/api/logout'
+grails.plugin.springsecurity.rest.validate.endpointUrl = '/api/validate'
 grails.plugin.springsecurity.rest.token.validation.useBearerToken = true
 grails.plugin.springsecurity.rest.token.validation.enableAnonymousAccess = false
 grails.plugin.springsecurity.rest.login.active = true
 grails.plugin.springsecurity.password.hashing.bcrypt.logRounds = 10 // Adjust log rounds as needed
 grails.plugin.springsecurity.password.algorithm = 'bcrypt'
-grails.plugin.springsecurity.rest.token.storage.useGorm = false
+grails.plugin.springsecurity.rest.token.storage.useGorm = true
 grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = 'com.keo.AuthenticationToken'
 grails.plugin.springsecurity.logout.postOnly = false
-
+grails.plugin.springsecurity.rest.token.storage.jwt.expiration = 3600 * 24 * 30
