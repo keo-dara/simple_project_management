@@ -1,6 +1,5 @@
 package com.keo
 
-
 class ProjectController {
 
     def projectService
@@ -9,9 +8,10 @@ class ProjectController {
 	static responseFormats = ['json', 'xml']
 
     def index() {
-
-        def result = projectService.list()
-
+        def params = params
+        def max = params['max'] as int
+        params["max"] = Math.min(max ?: 10, 100)
+        def result = projectService.list(params)
         respond result
     }
 
@@ -27,6 +27,20 @@ class ProjectController {
         } else {
             respond project.errors
         }
+    }
 
+    def delete(int id) {
+        respond projectService.delete(id)
+    }
+
+    def show(int id) {
+        respond projectService.findOne(id)
+    }
+
+
+    def patch(int id) {
+        def body = request.JSON
+        def user = springSecurityService.currentUser
+        respond projectService.update(id, body, user)
     }
 }

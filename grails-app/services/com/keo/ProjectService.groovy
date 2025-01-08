@@ -1,6 +1,9 @@
 package com.keo
 
+import javax.transaction.Transactional
 
+
+@Transactional
 class ProjectService {
 
     def create() {
@@ -8,8 +11,34 @@ class ProjectService {
         return  p
     }
     
-    def list() {
-        def plist = Project.list()
-        return  plist
+    def list(params) {
+        return [data: Project.list(params), count: Project.count()]
+    }
+
+    def delete(int id) {
+        def p = findOne(id)
+        p.delete()
+        return  p
+    }
+
+    def findOne(int id) {
+        return Project.get(id)
+    }
+
+    @Transactional
+    def update(int id, body, user) {
+        def p = Project.findById(id)
+        p.name = body["name"]
+        p.description = body["description"]
+        p.manager = user
+
+        if (p.validate()) {
+            p.save()
+            return Project.load(id)
+        } else {
+            println("Failed to update project. Errors: ${p.errors.allErrors}")
+            return p.errors
+        }
+
     }
 }

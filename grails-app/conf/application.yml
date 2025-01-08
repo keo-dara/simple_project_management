@@ -3,11 +3,12 @@ info:
     name: '@info.app.name@'
     version: '@info.app.version@'
     grailsVersion: '@info.app.grailsVersion@'
-logging:
-  level:
-    org:
-      springframework:
-        security: DEBUG
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: DEBUG
+
 grails:
   views:
     default:
@@ -83,3 +84,5 @@ hibernate:
     queries: false
     use_second_level_cache: false
     use_query_cache: false
+  flush:
+    mode: COMMIT
