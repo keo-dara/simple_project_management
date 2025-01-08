@@ -1,9 +1,18 @@
 package com.keo
 
-import grails.compiler.GrailsCompileStatic
-
 class Project {
 
     String name
     String description
+    Date startDate
+    Date endDate
+
+    static belongsTo = [manager: User]
+
+    static constraints = {
+        name: nullable: false
+        description: nullable: false
+        startDate blank: true, nullable: true
+        endDate blank: true, nullable: true
+    }
 }
