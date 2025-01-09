@@ -48,6 +48,7 @@ dataSource:
   password: 'my-secret-pw'
   pooled: true
   jmxExport: true
+  logSql: true
 environments:
   development:
     dataSource:
@@ -84,5 +85,3 @@ hibernate:
     queries: false
     use_second_level_cache: false
     use_query_cache: false
-  flush:
-    mode: COMMIT

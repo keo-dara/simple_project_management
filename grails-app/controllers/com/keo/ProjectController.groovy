@@ -19,7 +19,7 @@ class ProjectController {
         def requestBody = request.JSON
         def user = springSecurityService.currentUser
         def project = new Project(requestBody)
-        project.manager = user
+        project.managerId = user.id
 
         if (project.validate()) {
             project.save()

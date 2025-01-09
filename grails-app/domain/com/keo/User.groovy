@@ -17,7 +17,6 @@ class User implements Serializable {
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
-    Project project
 
     Set<Authority> getAuthorities() {
         UserAuthority.findAllByUser(this)*.authority
@@ -42,7 +41,6 @@ class User implements Serializable {
     static constraints = {
         password blank: false, password: true
         username blank: false, unique: true
-        project nullable: true
     }
 
     static mapping = {

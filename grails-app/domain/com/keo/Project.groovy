@@ -6,12 +6,12 @@ class Project {
     String description
     Date startDate
     Date endDate
-
-    static belongsTo = [manager: User]
+    int managerId
 
     static constraints = {
         name: nullable: false
         description: nullable: false
+        managerId: nullable: false
         startDate blank: true, nullable: true
         endDate blank: true, nullable: true
     }

@@ -1,6 +1,6 @@
 package com.keo
 
-import javax.transaction.Transactional
+import grails.gorm.transactions.Transactional
 
 
 @Transactional
@@ -30,11 +30,9 @@ class ProjectService {
         def p = Project.findById(id)
         p.name = body["name"]
         p.description = body["description"]
-        p.manager = user
 
         if (p.validate()) {
-            p.save()
-            return Project.load(id)
+            return p.save(flush:  true)
         } else {
             println("Failed to update project. Errors: ${p.errors.allErrors}")
             return p.errors

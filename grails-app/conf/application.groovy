@@ -31,3 +31,6 @@ grails.plugin.springsecurity.rest.token.storage.useGorm = true
 grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = 'com.keo.AuthenticationToken'
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.rest.token.storage.jwt.expiration = 3600 * 24 * 30
+grails.gorm.default.mapping = {
+    '*'(cascadeValidate: 'dirty')
+}
