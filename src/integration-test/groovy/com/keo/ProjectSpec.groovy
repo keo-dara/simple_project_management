@@ -32,5 +32,13 @@ class ProjectSpec extends Specification {
         p.description == "wow"
     }
 
-  
+    void "test delete project"() {
+        when: "a new project is created"
+        def p = projectService.create("App 2", "Wow")
+        def projects = projectService.count()
+        p.delete()
+        def projects2 = projectService.count()
+        then:
+        projects == 1
+    }
 }
