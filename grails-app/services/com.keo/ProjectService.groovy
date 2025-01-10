@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service
 @Transactional
 class ProjectService {
 
-    def create() {
-        def p = new Project(name: 'App', description: 'wow').save()
+    def create(String name, String description) {
+        def p = new Project(name: name, description: description).save()
         return  p
     }
     

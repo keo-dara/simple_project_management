@@ -25,7 +25,7 @@ class ProjectSpec extends Specification {
 
     void "test create project"() {
         when: "a new project is created"
-        def p = projectService.create()
+        def p = projectService.create("App","wow")
 
         then:
         p.name == "App"
