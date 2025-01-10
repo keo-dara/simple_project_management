@@ -55,4 +55,4 @@ jobs:
         DB_URL: jdbc:mysql://localhost:3306/test_app
         DB_USERNAME: root
         DB_PASSWORD: my-secret-pw
-      run: ./grailsw test-app
+      run: ./gradlew integrationTest
