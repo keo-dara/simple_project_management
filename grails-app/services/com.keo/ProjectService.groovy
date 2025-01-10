@@ -2,7 +2,9 @@ package com.keo
 
 import grails.gorm.transactions.Transactional
 
+import org.springframework.stereotype.Service
 
+@Service
 @Transactional
 class ProjectService {
 
@@ -28,8 +30,12 @@ class ProjectService {
     @Transactional
     def update(int id, body, user) {
         def p = Project.findById(id)
-        p.name = body["name"]
-        p.description = body["description"]
+
+        if (!p) {
+            return null
+        }
+
+        p.properties = body
 
         if (p.validate()) {
             return p.save(flush:  true)

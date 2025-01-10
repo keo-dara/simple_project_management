@@ -58,16 +58,17 @@ dependencies {
     console "org.grails:grails-console"
     runtimeOnly "mysql:mysql-connector-java"
     runtimeOnly "org.apache.tomcat:tomcat-jdbc"
+    implementation "org.grails.plugins:spring-security-rest:5.0.1"
+    implementation "org.grails.plugins:spring-security-core:6.1.1"
     testImplementation "io.micronaut:micronaut-inject-groovy"
     testImplementation "org.grails:grails-gorm-testing-support"
     testImplementation "org.grails:views-json-testing-support"
     testImplementation "org.spockframework:spock-core"
-    testImplementation "org.testcontainers:mysql"
-    testImplementation "org.testcontainers:spock"
-    testImplementation "org.testcontainers:testcontainers"
-    testImplementation 'org.testcontainers:junit-jupiter'
-    implementation "org.grails.plugins:spring-security-rest:5.0.1"
-    implementation "org.grails.plugins:spring-security-core:6.1.1"
+    testImplementation 'org.testcontainers:testcontainers:1.17.3'
+    testImplementation 'org.testcontainers:junit-jupiter:1.17.3'
+    testImplementation 'org.testcontainers:mysql:1.17.3'
+    testImplementation 'org.testcontainers:spock:1.17.3'
+
 }
 
 application {
