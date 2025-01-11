@@ -3,6 +3,7 @@ package com.keo
 
 import grails.testing.mixin.integration.Integration
 import grails.gorm.transactions.Rollback
+import org.springframework.beans.factory.annotation.Autowired
 import spock.lang.Specification
 
 @Integration
@@ -19,4 +20,5 @@ class TaskSpec extends Specification {
         expect:"fix me"
             true == true
     }
+
 }

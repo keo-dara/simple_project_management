@@ -13,13 +13,6 @@ class AuthController {
         def requestBody = request.JSON
         def user = new User(requestBody)
 
-        def old = authService.get(user.username);
-
-        if (old){
-            respond old
-            return
-        }
-
         if (user.validate()) {
             def p = authService.save(user.username, user.password)
             respond p

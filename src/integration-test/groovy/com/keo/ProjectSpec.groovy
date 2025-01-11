@@ -17,7 +17,13 @@ class ProjectSpec extends Specification {
     @Autowired
     ProjectService projectService
 
+    @Autowired
+    AuthService authService
+
+    User u
+
     def setup() {
+        u = authService.save("admin2", "12345678")
     }
 
     def cleanup() {
@@ -25,16 +31,17 @@ class ProjectSpec extends Specification {
 
     void "test create project"() {
         when: "a new project is created"
-        def p = projectService.create("App","wow")
+        def p = projectService.create("App","wow", u)
 
         then:
+        u.username == "admin2"
         p.name == "App"
         p.description == "wow"
     }
 
     void "test delete project"() {
         when: "a new project is created"
-        def p = projectService.create("App 2", "Wow")
+        def p = projectService.create("App 2", "Wow", u)
         def old_count = projectService.count()
         projectService.delete(p.id.toInteger())
         def new_count = projectService.count()
