@@ -22,7 +22,7 @@ class ProjectService {
     }
 
     def delete(int id) {
-        def p = Project.get(id)
+        def p = findOne(id)
         p.delete(flush: true)
         return  p
     }

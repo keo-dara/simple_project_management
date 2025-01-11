@@ -35,10 +35,10 @@ class ProjectSpec extends Specification {
     void "test delete project"() {
         when: "a new project is created"
         def p = projectService.create("App 2", "Wow")
-        def projects = projectService.count()
-        p.delete()
-        def projects2 = projectService.count()
+        def old_count = projectService.count()
+        projectService.delete(p.id.toInteger())
+        def new_count = projectService.count()
         then:
-        projects == 1
+        new_count == old_count - 1
     }
 }
