@@ -6,10 +6,7 @@ import groovy.transform.CompileStatic
 @CompileStatic
 class TaskService {
 
-    Task save(Task task, User user, Project project) {
-        task.by = user
-        task.project = project
-        task.save()
+    Task save(Task task) {
         return task
     }
 

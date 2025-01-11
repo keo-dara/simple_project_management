@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service
 class ProjectService {
 
     def create(String name, String description, User user) {
-
         def p = new Project(name: name, description: description, manager: user).save(flush: true)
         return  p
     }

@@ -18,10 +18,10 @@ class ProjectController {
     def save() {
         def requestBody = request.JSON
         def user = springSecurityService.currentUser
-        def project = new Project(requestBody)
+        def project = new Project(requestBody as Map)
 
         if (project.validate()) {
-           def p = projectService.create(project.name, project.description, user.id)
+           def p = projectService.create(project.name, project.description, user)
             respond p
         } else {
             respond project.errors

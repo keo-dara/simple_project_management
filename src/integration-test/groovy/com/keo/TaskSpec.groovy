@@ -28,8 +28,9 @@ class TaskSpec extends Specification {
         def p = projectService.create("App","wow", u)
 
         def new_task = new Task(name: "To do", description: "You")
-
-        def t = taskService.save(new_task, u, p)
+        new_task.by = u
+        new_task.project = p
+        def t = taskService.save(new_task)
 
         expect:"fix me"
         t.name == "To do"

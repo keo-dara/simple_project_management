@@ -20,28 +20,29 @@ class TaskController extends RestfulController {
     def save() {
         def req_body = request.JSON
         def user = springSecurityService.currentUser
+        def project_id = req_body["projectId"]
 
-        def project_id = req_body.get("projectId")
-
-        if (!projectId) {
+        if (!project_id) {
             project_found()
             return
         }
 
-        def project = Project.findWhere({ id:
-        projectId })
+        def project = Project.findWhere(id:
+                Long.parseLong(project_id.toString()))
 
-        if (!project){
+        if (!project) {
             project_found()
             return
         }
-
 
         def task = new Task(req_body)
+        task.by = user
+        task.status = Status.NOT_START
+        task.project = project
 
 
         if (task.validate()) {
-            def t = taskService.save(task, user,)
+            def t = taskService.save(task)
             respond t
         } else {
             respond task.errors
