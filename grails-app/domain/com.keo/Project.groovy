@@ -8,6 +8,7 @@ class Project {
     Date endDate
 
     static  belongsTo = [manager: User]
+    static  hasMany = [tasks: Task]
 
     static constraints = {
         name: nullable: false

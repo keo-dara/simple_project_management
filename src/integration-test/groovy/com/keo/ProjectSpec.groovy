@@ -5,9 +5,6 @@ import grails.testing.mixin.integration.Integration
 import grails.gorm.transactions.Rollback
 import spock.lang.Specification
 import org.springframework.beans.factory.annotation.*
-import org.springframework.beans.factory.annotation.Qualifier
-
-import com.keo.*
 
 @Integration
 @Rollback
@@ -24,9 +21,6 @@ class ProjectSpec extends Specification {
 
     def setup() {
         u = authService.save("admin2", "12345678")
-    }
-
-    def cleanup() {
     }
 
     void "test create project"() {

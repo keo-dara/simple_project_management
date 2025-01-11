@@ -48,6 +48,6 @@ class User implements Serializable {
         autowire true
     }
 
-    static hasMany = [projects: Project]
+    static hasMany = [projects: Project, tasks: Task]
 
 }

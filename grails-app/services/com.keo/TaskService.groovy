@@ -6,15 +6,11 @@ import groovy.transform.CompileStatic
 @CompileStatic
 class TaskService {
 
-    def doSomething() {
-
+    Task save(Task task, User user, Project project) {
+        task.by = user
+        task.project = project
+        task.save()
+        return task
     }
 
-    @Transactional
-    static class AuthService {
-
-        def serviceMethod() {
-
-        }
-    }
 }
