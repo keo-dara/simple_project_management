@@ -7,7 +7,7 @@ import groovy.transform.CompileStatic
 class TaskService {
 
     Task save(Task task) {
-        return task
+        return task.save()
     }
 
 }

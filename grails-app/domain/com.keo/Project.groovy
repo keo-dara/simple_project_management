@@ -17,4 +17,7 @@ class Project {
         endDate blank: true, nullable: true
         manager blank: true, nullable: true
     }
+    static  mapping = {
+        tasks lazy: false
+    }
 }
